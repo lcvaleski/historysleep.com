@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'History Sleep - AI Bedtime Stories That Bore You to Sleep',
-  description: 'Finally quiet your racing mind at night. History Sleep uses AI-generated boring history lectures and dull lectures to help you fall asleep naturally. Available on iOS and Android.',
+  description: 'Finally quiet your racing mind at night. History Sleep uses AI-generated boring history lectures to help you fall asleep naturally. Available on iOS.',
   keywords: 'sleep app, insomnia relief, history lectures, sleep aid, boring history lectures, fall asleep fast, meditation, sleep sounds',
   openGraph: {
     title: 'History Sleep - AI Bedtime Stories That Bore You to Sleep',

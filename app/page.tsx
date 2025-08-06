@@ -14,18 +14,18 @@ export default function Home() {
             </div>
             <div className="flex gap-2 sm:gap-3">
               <Link 
-                href="https://apps.apple.com/us/app/meandering-sleep/id6502964632"
+                href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
               >
                 <span className="hidden sm:inline">App Store</span>
                 <span className="sm:hidden">iOS</span>
               </Link>
               <Link 
-                href="https://play.google.com/store/apps/details?id=net.coventry.sleepless&hl=en"
+                href="#"
                 className="px-3 sm:px-4 py-2 bg-ms-periwinkle text-white rounded-lg font-medium text-xs sm:text-body hover:opacity-90 transition-colors"
               >
-                <span className="hidden sm:inline">Play Store</span>
-                <span className="sm:hidden">Android</span>
+                <span className="hidden sm:inline">Coming Soon</span>
+                <span className="sm:hidden">Soon</span>
               </Link>
             </div>
           </div>
@@ -42,21 +42,21 @@ export default function Home() {
               <span className="hidden sm:inline">To Fall Asleep</span>
             </h1>
             <p className="text-lg sm:text-xl text-ms-lavendar max-w-2xl mx-auto mb-8 px-4 sm:px-0">
-              History Sleep plays AI-generated boring history lectures and dull lectures that gently lull you into deep sleep. 
+              History Sleep plays AI-generated boring history lectures that gently lull you into deep sleep. 
               No more lying awake with anxious thoughts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4 sm:px-0">
               <Link 
-                href="https://apps.apple.com/us/app/meandering-sleep/id6502964632"
+                href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-orchid text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
               >
                 Download for iOS
               </Link>
               <Link 
-                href="https://play.google.com/store/apps/details?id=net.coventry.sleepless&hl=en"
+                href="#"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
               >
-                Download for Android
+                Android Coming Soon
               </Link>
             </div>
           </div>
@@ -77,12 +77,12 @@ export default function Home() {
                 />
               </div>
               
-              {/* Center phone - Player (shows on all screens) */}
+              {/* Center phone - Home (shows on all screens, especially mobile) */}
               <div className="relative z-10 transform sm:scale-110 max-w-[280px] sm:max-w-none">
                 <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
                 <Image 
-                  src="/mockups/frame3.png" 
-                  alt="Sleep Player" 
+                  src="/mockups/frame1.png" 
+                  alt="Home Screen" 
                   width={320} 
                   height={654}
                   priority
@@ -90,12 +90,12 @@ export default function Home() {
                 />
               </div>
               
-              {/* Right phone - Home */}
+              {/* Right phone - Player */}
               <div className="relative transform rotate-6 hover:rotate-0 transition-transform duration-500 hidden md:block">
                 <div className="absolute inset-0 bg-ms-fuschia/10 blur-2xl" />
                 <Image 
-                  src="/mockups/frame1.png" 
-                  alt="Home Screen" 
+                  src="/mockups/frame3.png" 
+                  alt="Sleep Player" 
                   width={280} 
                   height={572}
                   priority
@@ -178,10 +178,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">History Lectures</h3>
+              <h3 className="text-h3 font-semibold text-ms-white mb-2">Ancient Civilizations</h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                AI-generated tales about mundane observations and everyday reflections. 
-                Engaging enough to occupy your mind, boring enough to let you drift off.
+                Monotonous lectures on pottery shards from Mesopotamia and grain storage in Ancient Egypt. 
+                Detailed enough to occupy your mind, dull enough to let you drift off.
               </p>
             </div>
             
@@ -191,10 +191,10 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 16h4m10 0h4" />
                 </svg>
               </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">Boring Lectures</h3>
+              <h3 className="text-h3 font-semibold text-ms-white mb-2">Medieval Chronicles</h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                Monotonous talks on random topics delivered in the most sleep-inducing tone. 
-                Like your most boring college professor, but on demand.
+                Droning accounts of feudal tax records and agricultural yields from 13th century Europe. 
+                Like your most boring history professor, but on demand.
               </p>
             </div>
             
@@ -229,9 +229,9 @@ export default function Home() {
               too interesting (keeping me awake) or the same content over and over (boring, but predictably so).
             </p>
             <p className="text-lg text-ms-buttercream mb-4">
-              As a software engineering student, I had an idea: what if AI could generate infinitely boring, 
-              yet somehow engaging stories? Stories that would give my anxious brain something to focus on, 
-              but be so dull that I'd drift off naturally? I think it works pretty well.
+              As a software engineering student, I had an idea: what if AI could generate infinitely boring 
+              history lectures? Historical content that would give my anxious brain something to focus on, 
+              but be so wonderfully dull that I'd drift off naturally? I think it works pretty well.
             </p>
             <p className="text-lg text-ms-buttercream font-medium">
               
@@ -254,7 +254,7 @@ export default function Home() {
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
                 Unlike meditation apps or white noise, History Sleep gives your busy mind something to follow - 
-                but makes it so boring you can't help but drift off. The AI ensures you never hear the same story twice.
+                but makes it so boring you can't help but drift off. The AI ensures you never hear the same history lecture twice.
               </p>
             </div>
             
@@ -263,8 +263,8 @@ export default function Home() {
                 Is it really AI-generated?
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                Yes! Every story and lecture is uniquely generated by AI, ensuring endless variety. 
-                You'll never run out of new, perfectly boring content.
+                Yes! Every history lecture is uniquely generated by AI, ensuring endless variety. 
+                You'll never run out of new, perfectly boring historical content.
               </p>
             </div>
             
@@ -273,8 +273,8 @@ export default function Home() {
                 Can I try it for free?
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                Absolutely! The app is free to download and includes daily free content. 
-                Premium unlocks unlimited stories and custom voice features.
+                Absolutely! The app is free to download and includes daily free history lectures. 
+                Premium unlocks unlimited historical content and custom voice features.
               </p>
             </div>
             
@@ -283,8 +283,8 @@ export default function Home() {
                 What if I fall asleep with it playing?
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                The stories are designed to be gentle and quiet. Most users report naturally waking less 
-                as the monotonous content helps maintain deeper sleep cycles.
+                The history lectures are designed to be gentle and quiet. Most users report naturally waking less 
+                as the monotonous historical content helps maintain deeper sleep cycles.
               </p>
             </div>
           </div>
