@@ -9,8 +9,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-2">
-              <Image src="/full_logo.png" alt="Meandering Sleep" width={32} height={32} className="object-contain" />
-              <span className="text-h3 font-semibold text-ms-white hidden sm:inline">Meandering Sleep</span>
+              <Image src="/full_logo.png" alt="History Sleep" width={32} height={32} className="object-contain" />
+              <span className="text-h3 font-semibold text-ms-white hidden sm:inline">History Sleep</span>
             </div>
             <div className="flex gap-2 sm:gap-3">
               <Link 
@@ -42,7 +42,7 @@ export default function Home() {
               <span className="hidden sm:inline">To Fall Asleep</span>
             </h1>
             <p className="text-lg sm:text-xl text-ms-lavendar max-w-2xl mx-auto mb-8 px-4 sm:px-0">
-              Meandering Sleep plays AI-generated boring stories and dull lectures that gently lull you into deep sleep. 
+              History Sleep plays AI-generated boring history lectures and dull lectures that gently lull you into deep sleep. 
               No more lying awake with anxious thoughts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4 sm:px-0">
@@ -178,7 +178,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
               </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">Meandering Stories</h3>
+              <h3 className="text-h3 font-semibold text-ms-white mb-2">History Lectures</h3>
               <p className="text-body-lg text-ms-buttercream/90">
                 AI-generated tales about mundane observations and everyday reflections. 
                 Engaging enough to occupy your mind, boring enough to let you drift off.
@@ -218,7 +218,7 @@ export default function Home() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-blueberry to-ms-eclipse">
         <div className="max-w-4xl mx-auto">
           <div className="bg-ms-nocturne/80 backdrop-blur rounded-3xl p-8 md:p-12 shadow-xl border border-ms-lavendar/20">
-            <h2 className="text-3xl font-bold text-ms-white mb-6">Why I Created Meandering Sleep</h2>
+            <h2 className="text-3xl font-bold text-ms-white mb-6">Why I Created History Sleep</h2>
             <p className="text-lg text-ms-buttercream mb-4">
               Hi, I'm Logan. Like many of you, I consistently struggle to fall asleep. 
               My mind races - replaying conversations, planning tomorrow, etc.
@@ -253,7 +253,7 @@ export default function Home() {
                 How is this different from other sleep apps?
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                Unlike meditation apps or white noise, Meandering Sleep gives your busy mind something to follow - 
+                Unlike meditation apps or white noise, History Sleep gives your busy mind something to follow - 
                 but makes it so boring you can't help but drift off. The AI ensures you never hear the same story twice.
               </p>
             </div>
@@ -322,8 +322,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <Image src="/full_logo.png" alt="Meandering Sleep" width={24} height={24} className="object-contain" />
-              <span className="text-white font-medium">Meandering Sleep</span>
+              <Image src="/full_logo.png" alt="History Sleep" width={24} height={24} className="object-contain" />
+              <span className="text-white font-medium">History Sleep</span>
             </div>
             <div className="flex gap-6 text-sm">
               <a href="mailto:support@coventrylabs.net" className="text-ms-lavendar hover:text-white transition-colors">

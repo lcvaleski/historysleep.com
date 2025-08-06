@@ -1,3 +1,3 @@
-# Meandering Sleep
+# History Sleep
 
-AI-generated bedtime stories that bore you to sleep.
+  AI-generated boring history lectures to help you fall asleep.
