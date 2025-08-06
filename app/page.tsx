@@ -37,7 +37,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ms-white mb-6 px-4 sm:px-0">
-              Unhook Your Brain<br className="hidden sm:inline" />
+              Bore yourself<br className="hidden sm:inline" />
               <span className="sm:hidden">To Fall Asleep</span>
               <span className="hidden sm:inline">To Fall Asleep</span>
             </h1>
