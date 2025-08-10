@@ -63,7 +63,7 @@ export default function Home() {
             {/* Featured Badge */}
             <div className="flex justify-center mt-8">
               <a href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637" target="_blank" rel="nofollow">
-                <img width="300" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" alt="Featured on There's An AI For That" />
+                <img width="200" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" alt="Featured on There's An AI For That" className="drop-shadow-lg" />
               </a>
             </div>
           </div>
