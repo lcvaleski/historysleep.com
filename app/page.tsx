@@ -1,7 +1,52 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void
+  }
+}
+
 export default function Home() {
+  const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', eventName, parameters)
+    }
+  }
+
+  const handleAppStoreClick = () => {
+    trackEvent('click', {
+      event_category: 'download',
+      event_label: 'ios_app_store',
+      button_location: 'header'
+    })
+  }
+
+  const handleAppStoreHeroClick = () => {
+    trackEvent('click', {
+      event_category: 'download',
+      event_label: 'ios_app_store',
+      button_location: 'hero'
+    })
+  }
+
+  const handleAppStoreCTAClick = () => {
+    trackEvent('click', {
+      event_category: 'download',
+      event_label: 'ios_app_store',
+      button_location: 'final_cta'
+    })
+  }
+
+  const handleAndroidClick = (location: string) => {
+    trackEvent('click', {
+      event_category: 'download',
+      event_label: 'android_coming_soon',
+      button_location: location
+    })
+  }
   return (
     <div className="min-h-screen bg-ms-nocturne">
       {/* Navigation */}
@@ -16,6 +61,7 @@ export default function Home() {
               <Link 
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
+                onClick={handleAppStoreClick}
               >
                 <span className="hidden sm:inline">App Store</span>
                 <span className="sm:hidden">iOS</span>
@@ -23,6 +69,7 @@ export default function Home() {
               <Link 
                 href="#"
                 className="px-3 sm:px-4 py-2 bg-ms-periwinkle text-white rounded-lg font-medium text-xs sm:text-body hover:opacity-90 transition-colors"
+                onClick={() => handleAndroidClick('header')}
               >
                 <span className="hidden sm:inline">Coming Soon</span>
                 <span className="sm:hidden">Soon</span>
@@ -50,19 +97,30 @@ export default function Home() {
               <Link 
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-orchid text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                onClick={handleAppStoreHeroClick}
               >
                 Download for iOS
               </Link>
               <Link 
                 href="#"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                onClick={() => handleAndroidClick('hero')}
               >
                 Android Coming Soon
               </Link>
             </div>
             {/* Featured Badge */}
             <div className="flex justify-center mt-8">
-              <a href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637" target="_blank" rel="nofollow">
+              <a 
+                href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637" 
+                target="_blank" 
+                rel="nofollow"
+                onClick={() => trackEvent('click', {
+                  event_category: 'external_link',
+                  event_label: 'theresanaiforthat_badge',
+                  button_location: 'hero'
+                })}
+              >
                 <img width="200" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" alt="Featured on There's An AI For That" className="drop-shadow-lg" />
               </a>
             </div>
@@ -311,12 +369,14 @@ export default function Home() {
             <Link 
               href="https://apps.apple.com/us/app/meandering-sleep/id6502964632"
               className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-orchid text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+              onClick={handleAppStoreCTAClick}
             >
               Download for iOS
             </Link>
             <Link 
               href="https://play.google.com/store/apps/details?id=net.coventry.sleepless&hl=en"
               className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+              onClick={() => handleAndroidClick('final_cta')}
             >
               Download for Android
             </Link>
