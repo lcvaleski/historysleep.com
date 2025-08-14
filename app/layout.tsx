@@ -39,6 +39,11 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="7zoo/6M2cSWFxyLTmwn0ZA"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="font-manrope">{children}</body>
     </html>
