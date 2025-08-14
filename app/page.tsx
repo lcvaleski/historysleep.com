@@ -59,6 +59,12 @@ export default function Home() {
             </div>
             <div className="flex gap-2 sm:gap-3">
               <Link 
+                href="/articles/33-history-facts-to-fall-asleep-to"
+                className="px-3 sm:px-4 py-2 text-ms-lavendar hover:text-white transition-colors font-medium text-xs sm:text-body"
+              >
+                Blog
+              </Link>
+              <Link 
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
                 onClick={handleAppStoreClick}
@@ -350,6 +356,19 @@ export default function Home() {
               <p className="text-body-lg text-ms-buttercream/90">
                 The history lectures are designed to be gentle and quiet. Most users report naturally waking less 
                 as the monotonous historical content helps maintain deeper sleep cycles.
+              </p>
+            </div>
+            
+            <div className="bg-ms-blueberry/50 backdrop-blur rounded-xl p-6 shadow-md border border-ms-lavendar/20">
+              <h3 className="text-h3 font-semibold text-ms-white mb-2">
+                Want to learn more about sleep history?
+              </h3>
+              <p className="text-body-lg text-ms-buttercream/90">
+                Check out our article on{" "}
+                <Link href="/articles/33-history-facts-to-fall-asleep-to" className="text-ms-orchid hover:text-ms-fuschia underline">
+                  33 History Facts to Fall Asleep To
+                </Link>
+                {" "}for fascinating bedtime reading about how humans have approached sleep throughout history.
               </p>
             </div>
           </div>
