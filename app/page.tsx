@@ -59,7 +59,7 @@ export default function Home() {
             </div>
             <div className="flex gap-2 sm:gap-3">
               <Link 
-                href="/articles/33-history-facts-to-fall-asleep-to"
+                href="/articles"
                 className="px-3 sm:px-4 py-2 text-ms-lavendar hover:text-white transition-colors font-medium text-xs sm:text-body"
               >
                 Blog
@@ -364,7 +364,11 @@ export default function Home() {
                 Want to learn more about sleep history?
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
-                Check out our article on{" "}
+                Check out our articles:{" "}
+                <Link href="/articles/free-sleep-story-apps-history-podcasts" className="text-ms-orchid hover:text-ms-fuschia underline">
+                  Best Free Sleep Story Apps
+                </Link>
+                {" "}and{" "}
                 <Link href="/articles/33-history-facts-to-fall-asleep-to" className="text-ms-orchid hover:text-ms-fuschia underline">
                   33 History Facts to Fall Asleep To
                 </Link>
