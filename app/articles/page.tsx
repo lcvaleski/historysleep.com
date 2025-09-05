@@ -11,6 +11,27 @@ export const metadata: Metadata = {
 export default function BlogListPage() {
   const articles = [
     {
+      slug: 'roman-empire-sleep-stories',
+      title: 'Roman Empire Sleep Stories: Why Ancient Rome Makes Perfect Bedtime Audio',
+      description: 'Discover why Roman Empire sleep stories are the ultimate bedtime audio. From gladiator tales to emperor histories, ancient Rome provides endless calming narratives.',
+      date: 'January 2025',
+      readTime: '12 min read'
+    },
+    {
+      slug: 'medieval-history-sleep-podcasts',
+      title: 'Medieval History Sleep Podcasts: How Two-Sleep Cycles Inspire Modern Bedtime Stories',
+      description: 'Explore medieval history sleep podcasts and the fascinating two-sleep cycle. Learn how medieval bedtime practices inspire modern sleep stories.',
+      date: 'January 2025',
+      readTime: '11 min read'
+    },
+    {
+      slug: 'ancient-egypt-sleep-meditation',
+      title: 'Ancient Egypt Sleep Meditation: Dream Temples to Modern Bedtime Stories',
+      description: 'Discover ancient Egypt sleep meditation techniques from dream temples to modern bedtime stories. Learn how Egyptian sleep rituals help you fall asleep naturally.',
+      date: 'January 2025',
+      readTime: '13 min read'
+    },
+    {
       slug: 'free-sleep-story-apps-history-podcasts',
       title: 'Best Free Sleep Story Apps: History Podcasts to Fall Asleep To',
       description: 'Discover the best free sleep story apps featuring history facts to fall asleep to. Compare History Sleep\'s freemium model with other apps.',
