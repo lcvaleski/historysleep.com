@@ -47,7 +47,7 @@ export default function FreeSleepStoryAppsArticle() {
                     🎧 Free Sample Episode
                   </p>
                   <p className="text-ms-white font-semibold text-lg mb-3">
-                    "How Vikings Spent Their Time Between Raids"
+                    "Maintaining a Lighthouse in the 1800's"
                   </p>
                   <div className="bg-ms-nocturne/50 rounded-lg p-3">
                     <audio 
@@ -58,7 +58,7 @@ export default function FreeSleepStoryAppsArticle() {
                       }}
                       preload="metadata"
                     >
-                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST005.mp3" type="audio/mpeg" />
+                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST002.mp3" type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
                   </div>
@@ -78,7 +78,7 @@ export default function FreeSleepStoryAppsArticle() {
             </div>
 
             <p className="text-lg text-ms-buttercream mb-8">
-              Looking for free sleep story apps that actually work? If you're tired of meditation apps and nature sounds, history podcasts to fall asleep to might be your perfect solution. We've compared the top free sleep story apps to help you find the ideal bedtime companion, with a special focus on apps featuring history facts to fall asleep to.
+              Looking for free sleep story apps that actually work? If you're tired of meditation apps and nature sounds, history podcasts to fall asleep to might be your perfect solution. We've compared the top free sleep story apps to help you find the ideal bedtime companion, with a special focus on apps featuring <Link href="/articles/33-history-facts-to-fall-asleep-to" className="text-ms-orchid hover:text-ms-fuschia underline">history facts to fall asleep to</Link>.
             </p>
 
             <h2 className="text-3xl font-bold text-ms-white mt-12 mb-6">
@@ -306,7 +306,7 @@ export default function FreeSleepStoryAppsArticle() {
                       }}
                       preload="metadata"
                     >
-                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST005.mp3" type="audio/mpeg" />
+                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST002.mp3" type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
                     <div className="mt-3 flex items-center gap-4 text-sm text-ms-lavendar">
@@ -452,6 +452,24 @@ export default function FreeSleepStoryAppsArticle() {
                 <p className="text-ms-buttercream">
                   Regular history podcasts aim to educate and entertain. History Sleep specifically chooses boring topics and uses monotone narration designed to induce sleep.
                 </p>
+              </div>
+            </div>
+
+            {/* Related Articles */}
+            <div className="bg-ms-blueberry/20 rounded-2xl p-6 mt-12 mb-8 border border-ms-lavendar/20">
+              <h3 className="text-2xl font-bold text-ms-white mb-4">Related Articles</h3>
+              <div className="space-y-4">
+                <Link href="/articles/33-history-facts-to-fall-asleep-to" className="block group hover:opacity-90 transition-opacity">
+                  <h4 className="text-lg font-semibold text-ms-orchid group-hover:text-ms-fuschia transition-colors mb-1">
+                    33 History Facts to Fall Asleep To
+                  </h4>
+                  <p className="text-ms-buttercream text-sm">
+                    Discover 33 soothing history facts perfect for falling asleep. From ancient civilizations to fascinating historical tales that help you drift off peacefully.
+                  </p>
+                </Link>
+                <Link href="/articles" className="inline-block text-ms-periwinkle hover:text-ms-orchid transition-colors text-sm mt-4">
+                  ← View all articles
+                </Link>
               </div>
             </div>
 

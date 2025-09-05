@@ -14,7 +14,7 @@ export default function BlogListPage() {
       slug: 'free-sleep-story-apps-history-podcasts',
       title: 'Best Free Sleep Story Apps: History Podcasts to Fall Asleep To',
       description: 'Discover the best free sleep story apps featuring history facts to fall asleep to. Compare History Sleep\'s freemium model with other apps.',
-      date: 'January 2025',
+      date: 'December 2024',
       readTime: '8 min read'
     },
     {
