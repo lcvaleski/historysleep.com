@@ -47,7 +47,7 @@ export default function HistoryFactsArticle() {
                     🎧 Sample Episode
                   </p>
                   <p className="text-ms-white font-semibold text-lg mb-3">
-                    "How Vikings Spent Their Time Between Raids"
+                    "How Medieval Peasants Survived Cold Winter Nights"
                   </p>
                   <div className="bg-ms-nocturne/50 rounded-lg p-3">
                     <audio 
@@ -58,7 +58,7 @@ export default function HistoryFactsArticle() {
                       }}
                       preload="metadata"
                     >
-                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST005.mp3" type="audio/mpeg" />
+                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST001.mp3" type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
                   </div>
@@ -78,7 +78,7 @@ export default function HistoryFactsArticle() {
             </div>
 
             <p className="text-lg text-ms-buttercream mb-8">
-              Need something calming to help you drift off? These fascinating yet soothing historical facts are perfect for bedtime reading or listening. Each fact is carefully chosen to be interesting enough to distract your mind from daily stress, yet gentle enough to help you relax into sleep.
+              Need something calming to help you drift off? These fascinating yet soothing historical facts are perfect for bedtime reading or listening. Looking for more <Link href="/articles/free-sleep-story-apps-history-podcasts" className="text-ms-orchid hover:text-ms-fuschia underline">free sleep story apps</Link>? Each fact is carefully chosen to be interesting enough to distract your mind from daily stress, yet gentle enough to help you relax into sleep.
             </p>
 
             <h2 className="text-3xl font-bold text-ms-white mt-12 mb-6">
@@ -393,7 +393,7 @@ export default function HistoryFactsArticle() {
                     🌙 Full Episode - Perfect for Bedtime
                   </p>
                   <p className="text-ms-white font-bold text-xl mb-4">
-                    "How Vikings Spent Their Time Between Raids"
+                    "How Medieval Peasants Survived Cold Winter Nights"
                   </p>
                   <div className="bg-ms-nocturne/60 rounded-lg p-4 shadow-inner">
                     <audio 
@@ -404,7 +404,7 @@ export default function HistoryFactsArticle() {
                       }}
                       preload="metadata"
                     >
-                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST005.mp3" type="audio/mpeg" />
+                      <source src="https://storage.googleapis.com/active-audio/boringhistory/HIST001.mp3" type="audio/mpeg" />
                       Your browser does not support the audio element.
                     </audio>
                     <div className="mt-3 flex items-center gap-4 text-sm text-ms-lavendar">
@@ -430,6 +430,24 @@ export default function HistoryFactsArticle() {
                     Free to try • iOS & Android
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Related Articles */}
+            <div className="bg-ms-blueberry/20 rounded-2xl p-6 mt-12 mb-8 border border-ms-lavendar/20">
+              <h3 className="text-2xl font-bold text-ms-white mb-4">Related Articles</h3>
+              <div className="space-y-4">
+                <Link href="/articles/free-sleep-story-apps-history-podcasts" className="block group hover:opacity-90 transition-opacity">
+                  <h4 className="text-lg font-semibold text-ms-orchid group-hover:text-ms-fuschia transition-colors mb-1">
+                    Best Free Sleep Story Apps: History Podcasts to Fall Asleep To
+                  </h4>
+                  <p className="text-ms-buttercream text-sm">
+                    Discover the best free sleep story apps featuring history facts to fall asleep to. Compare History Sleep's freemium model with other apps.
+                  </p>
+                </Link>
+                <Link href="/articles" className="inline-block text-ms-periwinkle hover:text-ms-orchid transition-colors text-sm mt-4">
+                  ← View all articles
+                </Link>
               </div>
             </div>
 
