@@ -74,11 +74,11 @@ export default function Home() {
               </Link>
               <Link 
                 href="#"
-                className="px-3 sm:px-4 py-2 bg-ms-periwinkle text-white rounded-lg font-medium text-xs sm:text-body hover:opacity-90 transition-colors"
+                className="px-3 sm:px-4 py-2 bg-ms-periwinkle/30 text-white/70 rounded-lg font-medium text-xs sm:text-body hover:bg-ms-periwinkle/40 transition-all"
                 onClick={() => handleAndroidClick('header')}
               >
-                <span className="hidden sm:inline">Coming Soon</span>
-                <span className="sm:hidden">Soon</span>
+                <span className="hidden sm:inline">Android Soon</span>
+                <span className="sm:hidden">Android</span>
               </Link>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Home() {
               </Link>
               <Link 
                 href="#"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle/30 text-white/70 rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-periwinkle/40 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
                 onClick={() => handleAndroidClick('hero')}
               >
                 Android Coming Soon
@@ -398,7 +398,7 @@ export default function Home() {
             </Link>
             <Link 
               href="https://play.google.com/store/apps/details?id=net.coventry.sleepless&hl=en"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle text-white rounded-xl font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle/30 text-white/70 rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-periwinkle/40 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
               onClick={() => handleAndroidClick('final_cta')}
             >
               Download for Android
