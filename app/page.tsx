@@ -40,13 +40,6 @@ export default function Home() {
     })
   }
 
-  const handleAndroidClick = (location: string) => {
-    trackEvent('click', {
-      event_category: 'download',
-      event_label: 'android_coming_soon',
-      button_location: location
-    })
-  }
   return (
     <div className="min-h-screen bg-ms-nocturne">
       {/* Navigation */}
@@ -64,21 +57,18 @@ export default function Home() {
               >
                 Blog
               </Link>
-              <Link 
+              <Link
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
                 onClick={handleAppStoreClick}
+                className="inline-block"
               >
-                <span className="hidden sm:inline">App Store</span>
-                <span className="sm:hidden">iOS</span>
-              </Link>
-              <Link 
-                href="#"
-                className="px-3 sm:px-4 py-2 bg-ms-periwinkle/30 text-white/70 rounded-lg font-medium text-xs sm:text-body hover:bg-ms-periwinkle/40 transition-all"
-                onClick={() => handleAndroidClick('header')}
-              >
-                <span className="hidden sm:inline">Android Soon</span>
-                <span className="sm:hidden">Android</span>
+                <Image
+                  src="/appstore.png"
+                  alt="Download on the App Store"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </Link>
             </div>
           </div>
@@ -96,30 +86,29 @@ export default function Home() {
               To Fall Asleep
             </h1>
             <p className="text-lg sm:text-xl text-ms-lavendar max-w-2xl mx-auto mb-8 px-4 sm:px-0">
-              History Sleep plays AI-generated boring history lectures that gently lull you into deep sleep. 
+              History Sleep plays boring history lectures that gently lull you into deep sleep. 
               No more lying awake with anxious thoughts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4 sm:px-0">
-              <Link 
+              <Link
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-orchid text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
                 onClick={handleAppStoreHeroClick}
+                className="inline-block transform hover:scale-105 transition-transform"
               >
-                Download for iOS
-              </Link>
-              <Link 
-                href="#"
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle/30 text-white/70 rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-periwinkle/40 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
-                onClick={() => handleAndroidClick('hero')}
-              >
-                Android Coming Soon
+                <Image
+                  src="/appstore.png"
+                  alt="Download on the App Store"
+                  width={180}
+                  height={60}
+                  className="h-14 sm:h-16 w-auto"
+                />
               </Link>
             </div>
             {/* Featured Badge */}
             <div className="flex justify-center mt-8">
-              <a 
-                href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637" 
-                target="_blank" 
+              <a
+                href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637"
+                target="_blank"
                 rel="nofollow"
                 onClick={() => trackEvent('click', {
                   event_category: 'external_link',
@@ -232,60 +221,7 @@ export default function Home() {
       </section>
 
 
-      {/* Features Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-ms-blueberry">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-ms-white mb-4">
-            How It Works
-          </h2>
-          <p className="text-xl text-center text-ms-lavendar mb-12 max-w-2xl mx-auto">
-            Our AI creates endlessly boring content specifically designed to help your mind drift off
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-ms-periwinkle to-ms-orchid rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">Ancient Civilizations</h3>
-              <p className="text-body-lg text-ms-buttercream/90">
-                Monotonous lectures on pottery shards from Mesopotamia and grain storage in Ancient Egypt. 
-                Detailed enough to occupy your mind, dull enough to let you drift off.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-ms-coral to-ms-fuschia rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 16h4m10 0h4" />
-                </svg>
-              </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">Medieval Chronicles</h3>
-              <p className="text-body-lg text-ms-buttercream/90">
-                Droning accounts of feudal tax records and agricultural yields from 13th century Europe. 
-                Like your most boring history professor, but on demand.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-ms-blueberry to-ms-nocturne rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              </div>
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">Soothing Voices</h3>
-              <p className="text-body-lg text-ms-buttercream/90">
-                Calm, relaxing narration paired with carefully chosen background sounds. 
-                Creates the perfect serene atmosphere for sleep.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder's Story */}
+{/* Founder's Story */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-blueberry to-ms-eclipse">
         <div className="max-w-4xl mx-auto">
           <div className="bg-ms-nocturne/80 backdrop-blur rounded-3xl p-8 md:p-12 shadow-xl border border-ms-lavendar/20">
@@ -300,7 +236,7 @@ export default function Home() {
               too interesting (keeping me awake) or the same content over and over (boring, but predictably so).
             </p>
             <p className="text-lg text-ms-buttercream mb-4">
-              As a software engineering student, I had an idea: what if AI could generate infinitely boring 
+              As a software engineering student, I had an idea: what if we could create infinitely boring
               history lectures? Historical content that would give my anxious brain something to focus on, 
               but be so wonderfully dull that I'd drift off naturally? I think it works pretty well.
             </p>
@@ -325,17 +261,7 @@ export default function Home() {
               </h3>
               <p className="text-body-lg text-ms-buttercream/90">
                 Unlike meditation apps or white noise, History Sleep gives your busy mind something to follow - 
-                but makes it so boring you can't help but drift off. The AI ensures you never hear the same history lecture twice.
-              </p>
-            </div>
-            
-            <div className="bg-ms-blueberry/50 backdrop-blur rounded-xl p-6 shadow-md border border-ms-lavendar/20">
-              <h3 className="text-h3 font-semibold text-ms-white mb-2">
-                Is it really AI-generated?
-              </h3>
-              <p className="text-body-lg text-ms-buttercream/90">
-                Yes! Every history lecture is uniquely generated by AI, ensuring endless variety. 
-                You'll never run out of new, perfectly boring historical content.
+                but makes it so boring you can't help but drift off. Our system ensures you never hear the same history lecture twice.
               </p>
             </div>
             
@@ -389,19 +315,18 @@ export default function Home() {
             Join thousands who've finally found their perfect sleep solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-            <Link 
+            <Link
               href="https://apps.apple.com/us/app/meandering-sleep/id6502964632"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-orchid text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
               onClick={handleAppStoreCTAClick}
+              className="inline-block transform hover:scale-105 transition-transform"
             >
-              Download for iOS
-            </Link>
-            <Link 
-              href="https://play.google.com/store/apps/details?id=net.coventry.sleepless&hl=en"
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-ms-periwinkle/30 text-white/70 rounded-xl font-semibold text-base sm:text-lg hover:bg-ms-periwinkle/40 transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
-              onClick={() => handleAndroidClick('final_cta')}
-            >
-              Download for Android
+              <Image
+                src="/appstore.png"
+                alt="Download on the App Store"
+                width={180}
+                height={60}
+                className="h-14 sm:h-16 w-auto"
+              />
             </Link>
           </div>
         </div>

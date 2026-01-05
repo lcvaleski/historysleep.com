@@ -20,12 +20,17 @@ export default function FreeSleepStoryAppsArticle() {
               <span className="text-h3 font-semibold text-ms-white hidden sm:inline">History Sleep</span>
             </Link>
             <div className="flex gap-2 sm:gap-3">
-              <Link 
+              <Link
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
+                className="inline-block"
               >
-                <span className="hidden sm:inline">App Store</span>
-                <span className="sm:hidden">iOS</span>
+                <Image
+                  src="/appstore.png"
+                  alt="Download on the App Store"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </Link>
             </div>
           </div>
@@ -47,7 +52,7 @@ export default function FreeSleepStoryAppsArticle() {
                     🎧 Free Sample Episode
                   </p>
                   <p className="text-ms-white font-semibold text-lg mb-3">
-                    "Maintaining a Lighthouse in the 1800's"
+                    "Maintaining a lighthouse in the 1800's"
                   </p>
                   <div className="bg-ms-nocturne/50 rounded-lg p-3">
                     <audio 

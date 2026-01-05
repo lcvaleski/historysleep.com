@@ -58,12 +58,17 @@ export default function BlogListPage() {
               <span className="text-h3 font-semibold text-ms-white hidden sm:inline">History Sleep</span>
             </Link>
             <div className="flex gap-2 sm:gap-3">
-              <Link 
+              <Link
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                className="px-3 sm:px-4 py-2 bg-ms-orchid text-white rounded-lg font-medium text-xs sm:text-body hover:bg-ms-fuschia transition-colors"
+                className="inline-block"
               >
-                <span className="hidden sm:inline">App Store</span>
-                <span className="sm:hidden">iOS</span>
+                <Image
+                  src="/appstore.png"
+                  alt="Download on the App Store"
+                  width={120}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </Link>
             </div>
           </div>
@@ -126,11 +131,17 @@ export default function BlogListPage() {
             <p className="text-ms-buttercream mb-6">
               Download History Sleep and let boring history guide you to peaceful dreams.
             </p>
-            <Link 
+            <Link
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-              className="inline-block px-8 py-3 bg-ms-orchid text-white rounded-xl font-semibold text-lg hover:bg-ms-fuschia transition-all transform hover:scale-105 shadow-lg"
+              className="inline-block transform hover:scale-105 transition-transform"
             >
-              Get the App
+              <Image
+                src="/appstore.png"
+                alt="Download on the App Store"
+                width={180}
+                height={60}
+                className="h-14 sm:h-16 w-auto mx-auto"
+              />
             </Link>
           </div>
         </div>
