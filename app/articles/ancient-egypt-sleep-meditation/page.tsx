@@ -24,13 +24,18 @@ export default function AncientEgyptSleepMeditationArticle() {
                 href="https://apps.apple.com/us/app/history-sleep/id6749167616"
                 className="inline-block"
               >
-                <Image
-                  src="/appstore.png"
-                  alt="Download on the App Store"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
-                />
+                <div className="bg-white rounded-[20px] p-[20px] pb-[10px] shadow-[0px_10px_50px_5px_rgba(0,0,0,0.1)] flex flex-col items-center cursor-pointer">
+                  <Image
+                    src="/qr-code.png"
+                    alt="QR code"
+                    width={150}
+                    height={150}
+                    className="bg-white rounded-[20px]"
+                  />
+                  <p className="text-black font-medium mt-[10px] mb-[10px] text-[14px] max-w-[150px] text-center">
+                    Scan to get iOS app
+                  </p>
+                </div>
               </Link>
             </div>
           </div>

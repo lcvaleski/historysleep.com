@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect, useRef } from 'react'
 
 declare global {
   interface Window {
@@ -10,18 +11,41 @@ declare global {
 }
 
 export default function Home() {
+  const [showVideo, setShowVideo] = useState(true)
+  const [fadeVideo, setFadeVideo] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      const handleTimeUpdate = () => {
+        // Start fading 0.5 seconds before the video ends
+        if (video.duration && video.currentTime >= video.duration - 0.5) {
+          setFadeVideo(true)
+        }
+      }
+
+      const handleEnded = () => {
+        // After video ends, show the static image
+        setTimeout(() => {
+          setShowVideo(false)
+        }, 500) // Wait for fade transition to complete
+      }
+
+      video.addEventListener('timeupdate', handleTimeUpdate)
+      video.addEventListener('ended', handleEnded)
+
+      return () => {
+        video.removeEventListener('timeupdate', handleTimeUpdate)
+        video.removeEventListener('ended', handleEnded)
+      }
+    }
+  }, [])
+
   const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', eventName, parameters)
     }
-  }
-
-  const handleAppStoreClick = () => {
-    trackEvent('click', {
-      event_category: 'download',
-      event_label: 'ios_app_store',
-      button_location: 'header'
-    })
   }
 
   const handleAppStoreHeroClick = () => {
@@ -42,127 +66,89 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-ms-nocturne">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-ms-eclipse/95 backdrop-blur-sm z-50 border-b border-ms-blueberry/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center gap-2">
-              <Image src="/full_logo.png" alt="History Sleep" width={32} height={32} className="object-contain" />
-              <span className="text-h3 font-semibold text-ms-white hidden sm:inline">History Sleep</span>
-            </div>
-            <div className="flex gap-2 sm:gap-3">
-              <Link 
-                href="/articles"
-                className="px-3 sm:px-4 py-2 text-ms-lavendar hover:text-white transition-colors font-medium text-xs sm:text-body"
-              >
-                Blog
-              </Link>
-              <Link
-                href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                onClick={handleAppStoreClick}
-                className="inline-block"
-              >
-                <Image
-                  src="/appstore.png"
-                  alt="Download on the App Store"
-                  width={120}
-                  height={40}
-                  className="h-10 w-auto"
-                />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      {/* Logo in top left */}
+      <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
+        <Image
+          src="/full_logo.png"
+          alt="History Sleep"
+          width={48}
+          height={48}
+          className="object-contain w-8 h-8 sm:w-12 sm:h-12"
+        />
+      </div>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-nocturne to-ms-eclipse">
+      <section className="pt-24 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-nocturne to-ms-eclipse">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-ms-white mb-6 px-4 sm:px-0">
-              Bore Yourself<br className="sm:hidden" />
-              <span className="sm:hidden"> </span>
-              <span className="hidden sm:inline"><br /></span>
-              To Fall Asleep
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ms-white mb-16 sm:mb-20 px-4 sm:px-0">
+              Fall asleep to boring history.
             </h1>
-            <p className="text-lg sm:text-xl text-ms-lavendar max-w-2xl mx-auto mb-8 px-4 sm:px-0">
-              History Sleep plays boring history lectures that gently lull you into deep sleep. 
-              No more lying awake with anxious thoughts.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4 sm:px-0">
-              <Link
-                href="https://apps.apple.com/us/app/history-sleep/id6749167616"
-                onClick={handleAppStoreHeroClick}
-                className="inline-block transform hover:scale-105 transition-transform"
-              >
-                <Image
-                  src="/appstore.png"
-                  alt="Download on the App Store"
-                  width={180}
-                  height={60}
-                  className="h-14 sm:h-16 w-auto"
-                />
-              </Link>
-            </div>
-            {/* Featured Badge */}
-            <div className="flex justify-center mt-8">
-              <a
-                href="https://theresanaiforthat.com/ai/history-sleep/?ref=featured&v=7102637"
-                target="_blank"
-                rel="nofollow"
-                onClick={() => trackEvent('click', {
-                  event_category: 'external_link',
-                  event_label: 'theresanaiforthat_badge',
-                  button_location: 'hero'
-                })}
-              >
-                <img width="200" src="https://media.theresanaiforthat.com/featured-on-taaft.png?width=600" alt="Featured on There's An AI For That" className="drop-shadow-lg" />
-              </a>
+          </div>
+
+          {/* App Preview - Video Demo with Transition */}
+          <div className="relative mb-12 sm:mb-16">
+            <div className="flex justify-center">
+              <div className="relative max-w-[240px] sm:max-w-none" style={{ width: '260px', height: '531px' }}>
+                <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
+                {showVideo ? (
+                  <video
+                    ref={videoRef}
+                    autoPlay
+                    muted
+                    playsInline
+                    className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-lg border-4 border-black transition-opacity duration-500 ${
+                      fadeVideo ? 'opacity-0' : 'opacity-100'
+                    }`}
+                    style={{ objectFit: 'cover' }}
+                  >
+                    <source src="/mockups/demo.mov" type="video/quicktime" />
+                    <source src="/mockups/demo.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <Image
+                    src="/mockups/frame1.png"
+                    alt="Home Screen"
+                    width={260}
+                    height={531}
+                    priority
+                    className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-lg border-4 border-black"
+                    style={{ objectFit: 'cover' }}
+                  />
+                )}
+              </div>
             </div>
           </div>
 
-          {/* App Preview - 3 Phone Showcase */}
-          <div className="relative mt-8 sm:mt-16">
-            <div className="flex justify-center items-center gap-4 sm:gap-8 lg:gap-16">
-              {/* Left phone - Stories List */}
-              <div className="relative transform -rotate-6 hover:rotate-0 transition-transform duration-500 hidden md:block">
-                <div className="absolute inset-0 bg-ms-orchid/10 blur-2xl" />
-                <Image 
-                  src="/mockups/frame2.png" 
-                  alt="Story Selection" 
-                  width={280} 
-                  height={572}
-                  priority
-                  className="relative drop-shadow-xl"
-                />
+          {/* QR Code Download Section */}
+          <div className="flex justify-center mt-16 sm:mt-20 px-4 sm:px-0">
+            <Link
+              href="https://apps.apple.com/us/app/history-sleep/id6749167616"
+              onClick={handleAppStoreHeroClick}
+              className="inline-block transform hover:scale-105 transition-transform"
+            >
+              {/* Mobile: Black button */}
+              <div className="sm:hidden bg-black text-white rounded-xl px-8 py-4 font-bold text-lg flex items-center gap-2">
+                <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <span>Download<br className="sm:hidden" />on App Store</span>
               </div>
-              
-              {/* Center phone - Home (shows on all screens, especially mobile) */}
-              <div className="relative z-10 transform sm:scale-110 max-w-[280px] sm:max-w-none">
-                <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
-                <Image 
-                  src="/mockups/frame1.png" 
-                  alt="Home Screen" 
-                  width={320} 
-                  height={654}
-                  priority
-                  className="relative drop-shadow-2xl w-full h-auto"
+              {/* Desktop: QR Code */}
+              <div className="hidden sm:flex bg-white rounded-[20px] p-[20px] pb-[10px] shadow-[0px_10px_50px_5px_rgba(0,0,0,0.1)] flex-col items-center cursor-pointer">
+                <Image
+                  src="/qr-code.png"
+                  alt="QR code"
+                  width={150}
+                  height={150}
+                  className="bg-white rounded-[20px]"
                 />
+                <p className="text-black font-medium mt-[10px] mb-[10px] text-[14px] max-w-[150px] text-center">
+                  Scan to get iOS app
+                </p>
               </div>
-              
-              {/* Right phone - Player */}
-              <div className="relative transform rotate-6 hover:rotate-0 transition-transform duration-500 hidden md:block">
-                <div className="absolute inset-0 bg-ms-fuschia/10 blur-2xl" />
-                <Image 
-                  src="/mockups/frame3.png" 
-                  alt="Sleep Player" 
-                  width={280} 
-                  height={572}
-                  priority
-                  className="relative drop-shadow-xl"
-                />
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -170,10 +156,7 @@ export default function Home() {
       {/* Social Proof */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-eclipse to-ms-blueberry">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center text-ms-white mb-12">
-            Loved by Insomniacs Everywhere
-          </h2>
-          <div className="grid lg:grid-cols-3 gap-6">
+          <div className="grid lg:grid-cols-3 gap-6 max-w-sm sm:max-w-none mx-auto">
             <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -183,10 +166,9 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-lg text-ms-buttercream mb-4">
-                "I've tried numerous apps to help with my insomnia, but this one truly stands out. 
-                Since using this app, I've experienced significantly better sleep quality."
+                "Unhooks my brain."
               </p>
-              <p className="text-sm text-ms-lavendar">— Drew P., App Store Review</p>
+              <p className="text-sm text-ms-lavendar">— Drew P.</p>
             </div>
             <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
               <div className="flex gap-1 mb-4">
@@ -197,10 +179,9 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-lg text-ms-buttercream mb-4">
-                "This is exactly what I was looking for... something that allows me to drift-off 
-                to the deeper chasm of internal being. Love the app!"
+                "Watched random Youtube videos to fall asleep before this."
               </p>
-              <p className="text-sm text-ms-lavendar">— pequickster, App Store Review</p>
+              <p className="text-sm text-ms-lavendar">— pequickster</p>
             </div>
             <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
               <div className="flex gap-1 mb-4">
@@ -211,44 +192,16 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-lg text-ms-buttercream mb-4">
-                "I love this app so much! Nothing gets me to sleep like this one. 
-                Fantastic app!"
+                "Nothing gets me to sleep like this."
               </p>
-              <p className="text-sm text-ms-lavendar">— Blank_Pages, App Store Review</p>
+              <p className="text-sm text-ms-lavendar">— Blank_Pages</p>
             </div>
           </div>
         </div>
       </section>
 
 
-{/* Founder's Story */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-blueberry to-ms-eclipse">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-ms-nocturne/80 backdrop-blur rounded-3xl p-8 md:p-12 shadow-xl border border-ms-lavendar/20">
-            <h2 className="text-3xl font-bold text-ms-white mb-6">Why I Created History Sleep</h2>
-            <p className="text-lg text-ms-buttercream mb-4">
-              Hi, I'm Logan. Like many of you, I consistently struggle to fall asleep. 
-              My mind races - replaying conversations, planning tomorrow, etc.
-            </p>
-            <p className="text-lg text-ms-buttercream mb-4">
-              I've tried many solutions: meditation apps, white noise machines, sleep podcasts. 
-              Some helped a little, but nothing really worked consistently. The podcasts were either 
-              too interesting (keeping me awake) or the same content over and over (boring, but predictably so).
-            </p>
-            <p className="text-lg text-ms-buttercream mb-4">
-              As a software engineering student, I had an idea: what if we could create infinitely boring
-              history lectures? Historical content that would give my anxious brain something to focus on, 
-              but be so wonderfully dull that I'd drift off naturally? I think it works pretty well.
-            </p>
-            <p className="text-lg text-ms-buttercream font-medium">
-              
-            </p>
-            <p className="text-ms-orchid font-semibold mt-6">— Logan, Founder</p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
+      {/* FAQ Section - Commented out for now
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-ms-eclipse">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-ms-white mb-12">
@@ -303,41 +256,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Final CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-sleep">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Ready for the Best Sleep of Your Life?
-          </h2>
-          <p className="text-xl text-ms-buttercream mb-10">
-            Join thousands who've finally found their perfect sleep solution.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-            <Link
-              href="https://apps.apple.com/us/app/meandering-sleep/id6502964632"
-              onClick={handleAppStoreCTAClick}
-              className="inline-block transform hover:scale-105 transition-transform"
-            >
-              <Image
-                src="/appstore.png"
-                alt="Download on the App Store"
-                width={180}
-                height={60}
-                className="h-14 sm:h-16 w-auto"
-              />
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-ms-nocturne">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <Image src="/full_logo.png" alt="History Sleep" width={24} height={24} className="object-contain" />
+              <Image src="/full_logo.png" alt="History Sleep" width={16} height={16} className="object-contain" />
               <span className="text-white font-medium">History Sleep</span>
             </div>
             <div className="flex gap-6 text-sm">
