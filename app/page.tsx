@@ -100,8 +100,8 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Clean gradient that ends mid-viewport like Mist */}
-      <section className="h-[65vh] sm:h-[80vh] pt-40 sm:pt-20 px-4 bg-gradient-to-b from-ms-nocturne to-ms-eclipse flex items-center justify-center">
-        <div className="w-full max-w-6xl mx-auto">
+      <section className="min-h-[75vh] sm:h-[80vh] px-4 pb-20 sm:pb-0 bg-gradient-to-b from-ms-nocturne to-ms-eclipse flex flex-col sm:items-center sm:justify-center">
+        <div className="w-full max-w-6xl mx-auto mt-20 sm:mt-0">
           <div className="text-center mb-8">
             <h1 className="text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0">
               Fall asleep to boring history.
@@ -109,8 +109,8 @@ export default function Home() {
           </div>
 
           {/* App Preview - Video Demo with Transition */}
-          <div className="relative flex justify-center">
-            <div className="relative" style={{ width: '260px', height: '531px' }}>
+          <div className="relative flex justify-center mb-12 sm:mb-0">
+            <div className="relative w-[200px] h-[408px] sm:w-[260px] sm:h-[531px]">
               <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
               {/* Static image - always visible underneath */}
               <Image
@@ -119,7 +119,7 @@ export default function Home() {
                 width={260}
                 height={531}
                 priority
-                className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-[20px] border-2 border-black/20"
+                className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-2 border-black/20"
                 style={{ objectFit: 'cover' }}
               />
               {/* Video overlay - fades in when loaded, fades out when ending */}
@@ -129,7 +129,7 @@ export default function Home() {
                   autoPlay
                   muted
                   playsInline
-                  className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[20px] border-2 border-black/20 transition-opacity duration-700 ${
+                  className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-2 border-black/20 transition-opacity duration-700 ${
                     !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
                   }`}
                   style={{ objectFit: 'cover' }}
