@@ -93,14 +93,14 @@ export default function Home() {
         <Image
           src="/full_logo.png"
           alt="History Sleep"
-          width={48}
-          height={48}
-          className="object-contain w-8 h-8 sm:w-12 sm:h-12"
+          width={40}
+          height={40}
+          className="object-contain w-6 h-6 sm:w-10 sm:h-10"
         />
       </div>
 
       {/* Hero Section - Clean gradient that ends mid-viewport like Mist */}
-      <section className="h-[75vh] sm:h-[80vh] pt-20 px-4 bg-gradient-to-b from-ms-nocturne to-ms-eclipse flex items-center justify-center">
+      <section className="h-[65vh] sm:h-[80vh] pt-40 sm:pt-20 px-4 bg-gradient-to-b from-ms-nocturne to-ms-eclipse flex items-center justify-center">
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0">
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* QR Code Download Section - Darker background */}
-      <section className="py-12 sm:py-16 px-4 bg-ms-eclipse/50">
+      <section className="pt-32 pb-20 sm:py-16 px-4 bg-ms-eclipse/50">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <p className="text-xl font-semibold text-ms-buttercream mb-10 text-center max-w-[300px]">
             Hit play. Fall asleep.
@@ -156,12 +156,14 @@ export default function Home() {
               onClick={handleAppStoreHeroClick}
               className="inline-block transform hover:scale-105 transition-transform"
             >
-              {/* Mobile: Black button */}
-              <div className="sm:hidden bg-black text-white rounded-xl px-8 py-4 font-bold text-lg flex items-center gap-2">
-                <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <span>Download<br className="sm:hidden" />on App Store</span>
+              {/* Mobile: iOS button with container matching QR style */}
+              <div className="sm:hidden bg-ms-eclipse/80 rounded-[20px] p-5 shadow-[0px_4px_20px_rgba(0,0,0,0.25)] border border-ms-lavendar/10">
+                <div className="bg-black text-white rounded-2xl px-7 py-3.5 font-semibold text-base flex items-center gap-2.5">
+                  <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <span>Download on iOS</span>
+                </div>
               </div>
               {/* Desktop: QR Code */}
               <div className="hidden sm:flex bg-ms-eclipse/80 rounded-[20px] p-[20px] pb-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] flex-col items-center cursor-pointer border border-ms-lavendar/10">
@@ -188,7 +190,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex gap-4 justify-center flex-wrap">
             {/* Review Card 1 */}
-            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg w-full sm:min-w-[300px] sm:max-w-[320px] border border-ms-lavendar/10">
               <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
@@ -203,7 +205,7 @@ export default function Home() {
             </div>
 
             {/* Review Card 2 */}
-            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg w-full sm:min-w-[300px] sm:max-w-[320px] border border-ms-lavendar/10">
               <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
@@ -218,7 +220,7 @@ export default function Home() {
             </div>
 
             {/* Review Card 3 */}
-            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg w-full sm:min-w-[300px] sm:max-w-[320px] border border-ms-lavendar/10">
               <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
