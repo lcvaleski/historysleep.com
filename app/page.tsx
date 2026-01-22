@@ -148,7 +148,7 @@ export default function Home() {
       <section className="py-12 sm:py-16 px-4 bg-ms-eclipse/50">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <p className="text-xl font-semibold text-ms-buttercream mb-10 text-center max-w-[300px]">
-            Just hit play.
+            Hit play. Fall asleep.
           </p>
           <div className="flex justify-center">
             <Link
