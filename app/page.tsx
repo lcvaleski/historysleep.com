@@ -110,7 +110,7 @@ export default function Home() {
 
           {/* App Preview - Video Demo with Transition */}
           <div className="relative flex justify-center mb-12 sm:mb-0">
-            <div className="relative w-[200px] h-[408px] sm:w-[260px] sm:h-[531px]">
+            <div className="relative w-[280px] h-[572px] sm:w-[260px] sm:h-[531px]">
               <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
               {/* Static image - always visible underneath */}
               <Image
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* QR Code Download Section - Darker background */}
-      <section className="pt-32 pb-20 sm:py-16 px-4 bg-ms-eclipse/50">
+      <section className="pt-16 pb-20 sm:py-16 px-4 bg-ms-eclipse/50">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <p className="text-xl font-semibold text-ms-buttercream mb-10 text-center max-w-[300px]">
             Hit play. Fall asleep.
