@@ -13,11 +13,27 @@ declare global {
 export default function Home() {
   const [showVideo, setShowVideo] = useState(true)
   const [fadeVideo, setFadeVideo] = useState(false)
+  const [videoLoaded, setVideoLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    // Always show static image for 2 seconds first
+    const timer = setTimeout(() => {
+      const video = videoRef.current
+      if (video && video.readyState >= 3) {
+        setVideoLoaded(true)
+      }
+    }, 2000)
+
     const video = videoRef.current
     if (video) {
+      const handleCanPlay = () => {
+        // Video is ready, but only fade in after 2 seconds
+        setTimeout(() => {
+          setVideoLoaded(true)
+        }, Math.max(0, 2000 - video.currentTime * 1000))
+      }
+
       const handleTimeUpdate = () => {
         // Start fading 0.5 seconds before the video ends
         if (video.duration && video.currentTime >= video.duration - 0.5) {
@@ -29,17 +45,23 @@ export default function Home() {
         // After video ends, show the static image
         setTimeout(() => {
           setShowVideo(false)
+          setVideoLoaded(false) // Reset for clean state
         }, 500) // Wait for fade transition to complete
       }
 
+      video.addEventListener('canplaythrough', handleCanPlay)
       video.addEventListener('timeupdate', handleTimeUpdate)
       video.addEventListener('ended', handleEnded)
 
       return () => {
+        clearTimeout(timer)
+        video.removeEventListener('canplaythrough', handleCanPlay)
         video.removeEventListener('timeupdate', handleTimeUpdate)
         video.removeEventListener('ended', handleEnded)
       }
     }
+
+    return () => clearTimeout(timer)
   }, [])
 
   const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
@@ -77,52 +99,58 @@ export default function Home() {
         />
       </div>
 
-      {/* Hero Section */}
-      <section className="pt-24 sm:pt-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-nocturne to-ms-eclipse">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-ms-white mb-16 sm:mb-20 px-4 sm:px-0">
+      {/* Hero Section - Clean gradient that ends mid-viewport like Mist */}
+      <section className="h-[75vh] sm:h-[80vh] pt-20 px-4 bg-gradient-to-b from-ms-nocturne to-ms-eclipse flex items-center justify-center">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0">
               Fall asleep to boring history.
             </h1>
           </div>
 
           {/* App Preview - Video Demo with Transition */}
-          <div className="relative mb-12 sm:mb-16">
-            <div className="flex justify-center">
-              <div className="relative max-w-[240px] sm:max-w-none" style={{ width: '260px', height: '531px' }}>
-                <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
-                {showVideo ? (
-                  <video
-                    ref={videoRef}
-                    autoPlay
-                    muted
-                    playsInline
-                    className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-lg border-4 border-black transition-opacity duration-500 ${
-                      fadeVideo ? 'opacity-0' : 'opacity-100'
-                    }`}
-                    style={{ objectFit: 'cover' }}
-                  >
-                    <source src="/mockups/demo.mov" type="video/quicktime" />
-                    <source src="/mockups/demo.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <Image
-                    src="/mockups/frame1.png"
-                    alt="Home Screen"
-                    width={260}
-                    height={531}
-                    priority
-                    className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-lg border-4 border-black"
-                    style={{ objectFit: 'cover' }}
-                  />
-                )}
-              </div>
+          <div className="relative flex justify-center">
+            <div className="relative" style={{ width: '260px', height: '531px' }}>
+              <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
+              {/* Static image - always visible underneath */}
+              <Image
+                src="/mockups/frame1.png"
+                alt="Home Screen"
+                width={260}
+                height={531}
+                priority
+                className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-[20px] border-2 border-black/20"
+                style={{ objectFit: 'cover' }}
+              />
+              {/* Video overlay - fades in when loaded, fades out when ending */}
+              {showVideo && (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  playsInline
+                  className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[20px] border-2 border-black/20 transition-opacity duration-700 ${
+                    !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
+                  }`}
+                  style={{ objectFit: 'cover' }}
+                >
+                  <source src="/mockups/demo.mov" type="video/quicktime" />
+                  <source src="/mockups/demo.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* QR Code Download Section */}
-          <div className="flex justify-center mt-16 sm:mt-20 px-4 sm:px-0">
+      {/* QR Code Download Section - Darker background */}
+      <section className="py-12 sm:py-16 px-4 bg-ms-eclipse/50">
+        <div className="max-w-6xl mx-auto flex flex-col items-center">
+          <p className="text-xl font-semibold text-ms-buttercream mb-10 text-center max-w-[300px]">
+            Just hit play.
+          </p>
+          <div className="flex justify-center">
             <Link
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
               onClick={handleAppStoreHeroClick}
@@ -136,15 +164,17 @@ export default function Home() {
                 <span>Download<br className="sm:hidden" />on App Store</span>
               </div>
               {/* Desktop: QR Code */}
-              <div className="hidden sm:flex bg-white rounded-[20px] p-[20px] pb-[10px] shadow-[0px_10px_50px_5px_rgba(0,0,0,0.1)] flex-col items-center cursor-pointer">
-                <Image
-                  src="/qr-code.png"
-                  alt="QR code"
-                  width={150}
-                  height={150}
-                  className="bg-white rounded-[20px]"
-                />
-                <p className="text-black font-medium mt-[10px] mb-[10px] text-[14px] max-w-[150px] text-center">
+              <div className="hidden sm:flex bg-ms-eclipse/80 rounded-[20px] p-[20px] pb-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] flex-col items-center cursor-pointer border border-ms-lavendar/10">
+                <div className="bg-white/95 p-3 rounded-[16px]">
+                  <Image
+                    src="/qr-code.png"
+                    alt="QR code"
+                    width={130}
+                    height={130}
+                    className="rounded-[12px]"
+                  />
+                </div>
+                <p className="text-ms-buttercream/80 font-medium mt-[10px] mb-[10px] text-[14px] max-w-[150px] text-center">
                   Scan to get iOS app
                 </p>
               </div>
@@ -153,48 +183,53 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-ms-eclipse to-ms-blueberry">
+      {/* Social Proof - Cards with our color palette */}
+      <section className="pb-16 sm:pb-20 px-4 bg-ms-eclipse/50">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-6 max-w-sm sm:max-w-none mx-auto">
-            <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
-              <div className="flex gap-1 mb-4">
+          <div className="flex gap-4 justify-center flex-wrap">
+            {/* Review Card 1 */}
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+              <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-ms-orchid fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-lg text-ms-buttercream mb-4">
+              <p className="text-ms-buttercream font-semibold text-lg mb-4">
                 "Unhooks my brain."
               </p>
-              <p className="text-sm text-ms-lavendar">— Drew P.</p>
+              <p className="text-sm text-ms-lavendar/60 font-medium">Drew P.</p>
             </div>
-            <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
-              <div className="flex gap-1 mb-4">
+
+            {/* Review Card 2 */}
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+              <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-ms-orchid fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-lg text-ms-buttercream mb-4">
-                "Watched random Youtube videos to fall asleep before this."
+              <p className="text-ms-buttercream font-semibold text-lg mb-4">
+                "Finally stopped YouTube scrolling."
               </p>
-              <p className="text-sm text-ms-lavendar">— pequickster</p>
+              <p className="text-sm text-ms-lavendar/60 font-medium">pequickster</p>
             </div>
-            <div className="bg-ms-blueberry/50 backdrop-blur rounded-2xl p-8 shadow-lg border border-ms-lavendar/20">
-              <div className="flex gap-1 mb-4">
+
+            {/* Review Card 3 */}
+            <div className="bg-ms-nocturne/90 rounded-[18px] p-10 pb-8 shadow-lg min-w-[300px] max-w-[320px] border border-ms-lavendar/10">
+              <div className="flex gap-0.5 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-ms-orchid fill-current" viewBox="0 0 20 20">
+                  <svg key={i} className="w-3 h-3 fill-ms-orchid" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                   </svg>
                 ))}
               </div>
-              <p className="text-lg text-ms-buttercream mb-4">
+              <p className="text-ms-buttercream font-semibold text-lg mb-4">
                 "Nothing gets me to sleep like this."
               </p>
-              <p className="text-sm text-ms-lavendar">— Blank_Pages</p>
+              <p className="text-sm text-ms-lavendar/60 font-medium">Blank_Pages</p>
             </div>
           </div>
         </div>
@@ -259,29 +294,19 @@ export default function Home() {
       </section> */}
 
 
-      {/* Footer */}
-      <footer className="py-8 px-4 sm:px-6 lg:px-8 bg-ms-nocturne">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Image src="/full_logo.png" alt="History Sleep" width={16} height={16} className="object-contain" />
-              <span className="text-white font-medium">History Sleep</span>
-            </div>
-            <div className="flex gap-6 text-sm">
-              <a href="mailto:support@coventrylabs.net" className="text-ms-lavendar hover:text-white transition-colors">
-                support@coventrylabs.net
-              </a>
-              <a href="https://coventrylabs.net/privacy.html" className="text-ms-lavendar hover:text-white transition-colors">
-                Privacy Policy
-              </a>
-              <a href="https://coventrylabs.net/eula.html" className="text-ms-lavendar hover:text-white transition-colors">
-                EULA
-              </a>
-            </div>
-            <p className="text-ms-lavendar text-sm">
-              © 2024 Coventry Labs. All rights reserved.
-            </p>
-          </div>
+      {/* Footer - Minimal with our color palette */}
+      <footer className="py-20 px-4 bg-ms-nocturne flex flex-col items-center">
+        <div className="flex items-center gap-2 mb-4">
+          <Image src="/full_logo.png" alt="History Sleep" width={20} height={20} className="object-contain" />
+          <span className="text-ms-buttercream font-semibold text-xl">History Sleep</span>
+        </div>
+        <div className="flex gap-6 text-sm text-ms-lavendar/60">
+          <a href="mailto:support@coventrylabs.net" className="hover:text-ms-lavendar transition-colors">
+            Contact
+          </a>
+          <a href="https://coventrylabs.net/privacy.html" className="hover:text-ms-lavendar transition-colors">
+            Privacy
+          </a>
         </div>
       </footer>
     </div>
