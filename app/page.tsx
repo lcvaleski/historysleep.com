@@ -17,21 +17,21 @@ export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    // Always show static image for 2 seconds first
+    // Always show static image for 1 second first
     const timer = setTimeout(() => {
       const video = videoRef.current
       if (video && video.readyState >= 3) {
         setVideoLoaded(true)
       }
-    }, 2000)
+    }, 1000)
 
     const video = videoRef.current
     if (video) {
       const handleCanPlay = () => {
-        // Video is ready, but only fade in after 2 seconds
+        // Video is ready, but only fade in after 1 second
         setTimeout(() => {
           setVideoLoaded(true)
-        }, Math.max(0, 2000 - video.currentTime * 1000))
+        }, Math.max(0, 1000 - video.currentTime * 1000))
       }
 
       const handleTimeUpdate = () => {
@@ -120,9 +120,10 @@ export default function Home() {
               <Image
                 src="/mockups/frame1.png"
                 alt="Home Screen"
-                width={260}
-                height={531}
+                width={612}
+                height={1248}
                 priority
+                quality={90}
                 className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black"
                 style={{ objectFit: 'cover' }}
               />
@@ -133,13 +134,15 @@ export default function Home() {
                   autoPlay
                   muted
                   playsInline
-                  className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black transition-opacity duration-700 ${
+                  preload="metadata"
+                  poster="/mockups/frame1.png"
+                  className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black transition-opacity duration-500 ${
                     !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
                   }`}
                   style={{ objectFit: 'cover' }}
                 >
-                  <source src="/mockups/demo.mov" type="video/quicktime" />
                   <source src="/mockups/demo.mp4" type="video/mp4" />
+                  <source src="/mockups/demo.mov" type="video/quicktime" />
                   Your browser does not support the video tag.
                 </video>
               )}
