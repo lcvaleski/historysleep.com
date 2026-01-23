@@ -110,7 +110,7 @@ export default function Home() {
 
           {/* App Preview - Video Demo with Transition */}
           <div className="relative flex justify-center mb-12 sm:mb-0">
-            <div className="relative w-[280px] h-[572px] sm:w-[260px] sm:h-[531px]">
+            <div className="relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px]">
               <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
               {/* Static image - always visible underneath */}
               <Image
