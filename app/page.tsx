@@ -110,7 +110,11 @@ export default function Home() {
 
           {/* App Preview - Video Demo with Transition */}
           <div className="relative flex justify-center mb-12 sm:mb-0">
-            <div className="relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px]">
+            <Link 
+              href="https://apps.apple.com/us/app/history-sleep/id6749167616"
+              onClick={handleAppStoreHeroClick}
+              className="relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px] cursor-pointer"
+            >
               <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
               {/* Static image - always visible underneath */}
               <Image
@@ -139,7 +143,7 @@ export default function Home() {
                   Your browser does not support the video tag.
                 </video>
               )}
-            </div>
+            </Link>
           </div>
         </div>
       </section>
