@@ -100,7 +100,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Clean gradient that ends mid-viewport like Mist */}
-      <section className="min-h-[75vh] sm:h-[80vh] px-4 pb-20 sm:pb-0 bg-gradient-to-b from-ms-nocturne/95 to-[#1f1410] flex flex-col sm:items-center sm:justify-center">
+      <section className="min-h-[75vh] sm:h-[80vh] px-4 pb-20 sm:pb-0 sm:pt-20 bg-gradient-to-b from-ms-nocturne/95 to-[#1f1410] flex flex-col sm:items-center sm:justify-center">
         <div className="w-full max-w-6xl mx-auto mt-20 sm:mt-0">
           <div className="text-center mb-8">
             <h1 className="text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0">
