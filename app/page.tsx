@@ -168,7 +168,7 @@ export default function Home() {
             <Link 
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
               onClick={handleAppStoreHeroClick}
-              className={`relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px] cursor-pointer transition-opacity duration-700 ${
+              className={`relative w-[280px] h-[594px] sm:w-[300px] sm:h-[638px] cursor-pointer transition-opacity duration-700 ${
                 contentLoaded ? 'opacity-100' : 'opacity-0'
               }`}
             >
@@ -182,7 +182,7 @@ export default function Home() {
                 priority
                 quality={90}
                 className="absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
               />
               {/* Video overlay - fades in when loaded, fades out when ending */}
               {showVideo && (
@@ -196,7 +196,7 @@ export default function Home() {
                   className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black transition-opacity duration-500 ${
                     !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
                   }`}
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                 >
                   <source src="/mockups/demo_new.mov" type="video/quicktime" />
                   Your browser does not support the video tag.
