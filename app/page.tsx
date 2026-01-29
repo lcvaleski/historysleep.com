@@ -14,24 +14,33 @@ export default function Home() {
   const [showVideo, setShowVideo] = useState(true)
   const [fadeVideo, setFadeVideo] = useState(false)
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [contentLoaded, setContentLoaded] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTime, setCurrentTime] = useState(0)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   useEffect(() => {
-    // Always show static image for 1 second first
+    // Fade in content on page load
+    setTimeout(() => {
+      setContentLoaded(true)
+    }, 100)
+    
+    // Always show static image for 0.5 seconds first
     const timer = setTimeout(() => {
       const video = videoRef.current
       if (video && video.readyState >= 3) {
         setVideoLoaded(true)
       }
-    }, 1000)
+    }, 500)
 
     const video = videoRef.current
     if (video) {
       const handleCanPlay = () => {
-        // Video is ready, but only fade in after 1 second
+        // Video is ready, but only fade in after 0.5 seconds
         setTimeout(() => {
           setVideoLoaded(true)
-        }, Math.max(0, 1000 - video.currentTime * 1000))
+        }, Math.max(0, 500 - video.currentTime * 1000))
       }
 
       const handleTimeUpdate = () => {
@@ -63,6 +72,50 @@ export default function Home() {
 
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (audio) {
+      const handleTimeUpdate = () => {
+        setCurrentTime(audio.currentTime)
+        // Stop at 10 seconds
+        if (audio.currentTime >= 10) {
+          audio.pause()
+          audio.currentTime = 0
+          setIsPlaying(false)
+          setCurrentTime(0)
+        }
+      }
+
+      const handleEnded = () => {
+        setIsPlaying(false)
+        setCurrentTime(0)
+      }
+
+      audio.addEventListener('timeupdate', handleTimeUpdate)
+      audio.addEventListener('ended', handleEnded)
+
+      return () => {
+        audio.removeEventListener('timeupdate', handleTimeUpdate)
+        audio.removeEventListener('ended', handleEnded)
+      }
+    }
+  }, [])
+
+  const togglePlayPause = () => {
+    const audio = audioRef.current
+    if (audio) {
+      if (isPlaying) {
+        audio.pause()
+      } else {
+        if (audio.currentTime >= 10) {
+          audio.currentTime = 0
+        }
+        audio.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
 
   const trackEvent = (eventName: string, parameters?: Record<string, any>) => {
     if (typeof window !== 'undefined' && window.gtag) {
@@ -100,25 +153,29 @@ export default function Home() {
       </div>
 
       {/* Hero Section - Clean gradient that ends mid-viewport like Mist */}
-      <section className="min-h-[75vh] sm:h-[80vh] px-4 pb-20 sm:pb-0 sm:pt-20 bg-gradient-to-b from-ms-nocturne/95 to-[#1f1410] flex flex-col sm:items-center sm:justify-center">
-        <div className="w-full max-w-6xl mx-auto mt-20 sm:mt-0">
+      <section className="min-h-[75vh] sm:h-[80vh] px-4 pb-20 sm:pb-8 sm:pt-32 bg-gradient-to-b from-ms-nocturne/95 to-[#1f1410] flex flex-col sm:items-center sm:justify-center">
+        <div className="w-full max-w-6xl mx-auto mt-20 sm:mt-8">
           <div className="text-center mb-8">
-            <h1 className="text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0">
+            <h1 className={`text-xl sm:text-2xl font-bold text-ms-white mb-8 px-4 sm:px-0 transition-opacity duration-700 ${
+              contentLoaded ? 'opacity-100' : 'opacity-0'
+            }`}>
               Fall asleep to boring history.
             </h1>
           </div>
 
           {/* App Preview - Video Demo with Transition */}
-          <div className="relative flex justify-center mb-12 sm:mb-0">
+          <div className="relative flex justify-center">
             <Link 
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
               onClick={handleAppStoreHeroClick}
-              className="relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px] cursor-pointer"
+              className={`relative w-[280px] h-[572px] sm:w-[300px] sm:h-[612px] cursor-pointer transition-opacity duration-700 ${
+                contentLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
             >
               <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
               {/* Static image - always visible underneath */}
               <Image
-                src="/mockups/frame1.png"
+                src="/mockups/frame_new.png"
                 alt="Home Screen"
                 width={612}
                 height={1248}
@@ -135,18 +192,56 @@ export default function Home() {
                   muted
                   playsInline
                   preload="metadata"
-                  poster="/mockups/frame1.png"
+                  poster="/mockups/frame_new.png"
                   className={`absolute inset-0 drop-shadow-2xl w-full h-full rounded-[16px] sm:rounded-[20px] border-4 border-black transition-opacity duration-500 ${
                     !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
                   }`}
                   style={{ objectFit: 'cover' }}
                 >
-                  <source src="/mockups/demo.mp4" type="video/mp4" />
-                  <source src="/mockups/demo.mov" type="video/quicktime" />
+                  <source src="/mockups/demo_new.mov" type="video/quicktime" />
                   Your browser does not support the video tag.
                 </video>
               )}
             </Link>
+          </div>
+
+          {/* Audio Preview Section */}
+          <div className={`mt-8 mb-0 sm:mb-12 flex flex-col items-center transition-opacity duration-700 delay-300 ${
+            contentLoaded ? 'opacity-100' : 'opacity-0'
+          }`}>
+            <div className="bg-ms-nocturne/60 backdrop-blur-sm rounded-full px-6 py-3 flex items-center gap-4 border border-ms-lavendar/20">
+              <button
+                onClick={togglePlayPause}
+                className="w-10 h-10 rounded-full bg-ms-orchid hover:bg-ms-fuschia transition-colors flex items-center justify-center"
+              >
+                {isPlaying ? (
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <rect x="6" y="4" width="4" height="16" />
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                )}
+              </button>
+              <div className="flex items-center gap-3">
+                <div className="relative w-32 h-1 bg-ms-eclipse rounded-full overflow-hidden">
+                  <div 
+                    className="absolute left-0 top-0 h-full bg-ms-orchid rounded-full transition-all duration-100"
+                    style={{ width: `${(currentTime / 10) * 100}%` }}
+                  />
+                </div>
+                <span className="text-ms-buttercream/60 text-xs font-mono min-w-[45px]">
+                  {Math.floor(currentTime)}s / 10s
+                </span>
+              </div>
+            </div>
+            <audio
+              ref={audioRef}
+              src="https://storage.googleapis.com/active-audio/boringhistory/HIST002.mp3"
+              preload="metadata"
+            />
           </div>
         </div>
       </section>
