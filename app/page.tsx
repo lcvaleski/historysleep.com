@@ -168,7 +168,7 @@ export default function Home() {
             <Link 
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
               onClick={handleAppStoreHeroClick}
-              className={`relative w-[280px] h-[594px] sm:w-[300px] sm:h-[638px] cursor-pointer transition-opacity duration-700 ${
+              className={`relative w-[276px] h-[588px] sm:w-[300px] sm:h-[638px] cursor-pointer transition-opacity duration-700 ${
                 contentLoaded ? 'opacity-100' : 'opacity-0'
               }`}
             >
@@ -226,7 +226,7 @@ export default function Home() {
                 )}
               </button>
               <div className="flex items-center gap-3">
-                <div className="relative w-32 h-1 bg-ms-eclipse rounded-full overflow-hidden">
+                <div className="relative w-40 h-1 bg-ms-eclipse rounded-full overflow-hidden">
                   <div 
                     className="absolute left-0 top-0 h-full bg-ms-orchid rounded-full transition-all duration-100"
                     style={{ width: `${(currentTime / 10) * 100}%` }}
