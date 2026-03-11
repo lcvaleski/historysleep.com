@@ -31,10 +31,10 @@ export default function DesktopPage() {
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-ms-nocturne/95 to-[#1f1410] flex flex-col items-center justify-center">
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className={`text-2xl font-bold text-ms-white mb-8 transition-opacity duration-700 ${
+            <h1 className={`font-inter-tight text-5xl md:text-6xl font-black uppercase text-ms-white mb-8 text-center leading-loose tracking-wide transition-opacity duration-700 ${
               contentLoaded ? 'opacity-100' : 'opacity-0'
             }`}>
-              Fall asleep to boring history.
+              This app<br />helps you<br />fall<br />asleep
             </h1>
           </div>
 
