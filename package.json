@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/inter-tight": "^5.2.7",
     "@fontsource/manrope": "^5.2.6",
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.9",
