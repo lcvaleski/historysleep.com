@@ -35,7 +35,7 @@ export default function AppPreview({
         }`}
         style={{ width, height }}
       >
-        <div className="absolute inset-0 bg-ms-periwinkle/20 blur-3xl" />
+        <div className="absolute inset-0 bg-white/10 blur-3xl" />
         <Image
           src="/mockups/frame_new.png"
           alt="Home Screen"

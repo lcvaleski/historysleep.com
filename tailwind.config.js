@@ -35,12 +35,12 @@ module.exports = {
         'ms-lavendar': '#C6B0B8',
         'ms-buttercream': '#F1DDBD',
         // Legacy colors for gradients (will update these next)
-        'ms-nocturne': '#2A1F14',
+        'ms-nocturne': '#0B1120',
         'ms-eclipse': '#57494F',
         'ms-blueberry': '#7C6C63',
       },
       backgroundImage: {
-        'gradient-sleep': 'linear-gradient(135deg, #7C6C63 0%, #57494F 50%, #2A1F14 100%)',
+        'gradient-sleep': 'linear-gradient(135deg, #7C6C63 0%, #57494F 50%, #0B1120 100%)',
         'gradient-soft': 'linear-gradient(180deg, #F1DDBD 0%, #C6B0B8 100%)',
       },
     },

@@ -3,12 +3,12 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Fall asleep to boring history',
-  description: 'Finally quiet your racing mind at night. History Sleep uses boring history lectures to help you fall asleep naturally. Available on iOS.',
-  keywords: 'sleep app, insomnia relief, history lectures, sleep aid, boring history lectures, fall asleep fast, meditation, sleep sounds',
+  title: 'Bore — Hit play. Fall asleep.',
+  description: 'The sleep app that puts you to sleep with the world\'s most boring audio. BBC Radio, C-SPAN hearings, NASA recordings, university lectures. Available on iOS.',
+  keywords: 'sleep app, insomnia relief, boring audio, sleep aid, fall asleep fast, bore, boring lectures, sleep sounds',
   openGraph: {
-    title: 'Fall asleep to boring history',
-    description: 'Finally quiet your racing mind at night with boring history lectures.',
+    title: 'Bore — Hit play. Fall asleep.',
+    description: 'The sleep app that puts you to sleep with the world\'s most boring audio.',
     images: ['/shareimage.png'],
   },
 }
