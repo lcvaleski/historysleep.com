@@ -9,10 +9,10 @@ interface AppPreviewProps {
   height: number
   borderRadius: string
   contentLoaded: boolean
-  showVideo: boolean
-  fadeVideo: boolean
-  videoLoaded: boolean
-  videoRef: React.RefObject<HTMLVideoElement | null>
+  showVideo?: boolean
+  fadeVideo?: boolean
+  videoLoaded?: boolean
+  videoRef?: React.RefObject<HTMLVideoElement | null>
 }
 
 export default function AppPreview({
@@ -20,10 +20,6 @@ export default function AppPreview({
   height,
   borderRadius,
   contentLoaded,
-  showVideo,
-  fadeVideo,
-  videoLoaded,
-  videoRef,
 }: AppPreviewProps) {
   return (
     <div className="relative flex justify-center">
@@ -37,32 +33,15 @@ export default function AppPreview({
       >
         <div className="absolute inset-0 bg-white/10 blur-3xl" />
         <Image
-          src="/mockups/frame_new.png"
-          alt="Home Screen"
+          src="/mockups/app_screenshot.png"
+          alt="Bore app screenshot"
           width={612}
           height={1248}
           priority
           quality={90}
           className={`absolute inset-0 drop-shadow-2xl w-full h-full ${borderRadius} border-4 border-black`}
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'cover' }}
         />
-        {showVideo && (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            preload="metadata"
-            poster="/mockups/frame_new.png"
-            className={`absolute inset-0 drop-shadow-2xl w-full h-full ${borderRadius} border-4 border-black transition-opacity duration-500 ${
-              !videoLoaded ? 'opacity-0' : fadeVideo ? 'opacity-0' : 'opacity-100'
-            }`}
-            style={{ objectFit: 'contain' }}
-          >
-            <source src="/mockups/demo_new.mov" type="video/quicktime" />
-            Your browser does not support the video tag.
-          </video>
-        )}
       </Link>
     </div>
   )
