@@ -8,7 +8,7 @@ import { handleAppStoreCTAClick } from './analytics'
 import AppPreview from './AppPreview'
 import AudioPlayer from './AudioPlayer'
 import ReviewCards from './ReviewCards'
-import SampleTitles from './SampleTitles'
+import MobileTickerCards from './MobileTickerCards'
 import Footer from './Footer'
 
 export default function DesktopPage() {
@@ -32,12 +32,14 @@ export default function DesktopPage() {
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-ms-nocturne to-[#0F1A2E] flex flex-col items-center justify-center">
         <div className="relative w-full max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className={`font-inter-tight text-4xl md:text-5xl font-black uppercase text-center tracking-wide leading-[1.5] bg-gradient-to-b from-ms-white/90 to-ms-white bg-clip-text text-transparent transition-opacity duration-700 ${
+            <h1 className={`font-inter-tight text-4xl md:text-5xl font-black uppercase text-center tracking-wide leading-[1.7] text-ms-white transition-opacity duration-700 ${
               contentLoaded ? 'opacity-100' : 'opacity-0'
             }`}>
-              Bore<br />helps you<br />fall asleep
+              <span className="opacity-50">Bore</span><br />helps you<br />fall asleep
             </h1>
           </div>
+
+          <MobileTickerCards visible={contentLoaded} />
 
           <AppPreview
             width={300}
@@ -58,8 +60,6 @@ export default function DesktopPage() {
             contentLoaded={contentLoaded}
             className="mt-8 mb-12"
           />
-
-          <SampleTitles />
         </div>
       </section>
 

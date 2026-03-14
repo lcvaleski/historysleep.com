@@ -9,6 +9,7 @@ import AppPreview from './AppPreview'
 import AudioPlayer from './AudioPlayer'
 import ReviewCards from './ReviewCards'
 import Footer from './Footer'
+import MobileTickerCards from './MobileTickerCards'
 
 export default function MobilePage() {
   const { showVideo, fadeVideo, videoLoaded, contentLoaded, videoRef } = useVideoPlayer()
@@ -30,13 +31,15 @@ export default function MobilePage() {
       {/* Hero Section */}
       <section className="pt-20 pb-12 px-4 bg-gradient-to-b from-ms-nocturne to-[#0F1A2E] flex flex-col items-center">
         <div className="w-full max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className={`font-inter-tight text-3xl font-black uppercase text-center tracking-wide leading-[1.3] bg-gradient-to-b from-ms-white/90 to-ms-white bg-clip-text text-transparent transition-opacity duration-700 ${
+          <div className="text-center mb-4">
+            <h1 className={`font-inter-tight text-3xl font-black uppercase text-center tracking-wide leading-[1.3] text-ms-white transition-opacity duration-700 ${
               contentLoaded ? 'opacity-100' : 'opacity-0'
             }`}>
-              Bore<br />helps you<br />fall asleep
+              <span className="opacity-50">Bore</span><br />helps you<br />fall asleep
             </h1>
           </div>
+
+          <MobileTickerCards visible={contentLoaded} />
 
           <AppPreview
             width={276}
