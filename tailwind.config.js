@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         'manrope': ['Manrope', 'system-ui', 'sans-serif'],
         'inter-tight': ['Inter Tight', 'system-ui', 'sans-serif'],
+        'public-sans': ['Public Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'h1': ['28px', { lineHeight: '34px', letterSpacing: '0.01em' }],
@@ -46,7 +47,8 @@ module.exports = {
         },
       },
       animation: {
-        'ticker-scroll': 'ticker-scroll 50s linear infinite',
+        'ticker-scroll': 'ticker-scroll 55s linear infinite',
+        'ticker-scroll-slow': 'ticker-scroll 70s linear infinite',
       },
       backgroundImage: {
         'gradient-sleep': 'linear-gradient(135deg, #7C6C63 0%, #57494F 50%, #0B1120 100%)',

@@ -1,4 +1,11 @@
-export const sampleTitles = [
+export type SampleTitle = {
+  category: string
+  title: string
+  bg: string
+  icon?: 'breathwork' | 'tips'
+}
+
+export const sampleTitles: SampleTitle[] = [
   {
     category: 'C-SPAN',
     title: 'Watergate Hearings, 1973',
@@ -58,5 +65,44 @@ export const sampleTitles = [
     category: 'ARCHIVE.ORG',
     title: 'FDR Fireside Chat, 1933',
     bg: 'linear-gradient(135deg, #504848 0%, #383030 40%, #251e1e 100%)',
+  },
+]
+
+export const breathworkTitles: SampleTitle[] = [
+  {
+    category: 'BREATHWORK',
+    title: '4-7-8 Sleep Breathing',
+    bg: 'linear-gradient(135deg, #3a5a5a 0%, #284848 40%, #1a3030 100%)',
+    icon: 'breathwork',
+  },
+  {
+    category: 'SLEEP TIPS',
+    title: 'The 10-3-2-1 Rule',
+    bg: 'linear-gradient(135deg, #4a4a5a 0%, #353545 40%, #202030 100%)',
+    icon: 'tips',
+  },
+  {
+    category: 'BREATHWORK',
+    title: 'Box Breathing for Sleep',
+    bg: 'linear-gradient(135deg, #405a55 0%, #2a4540 40%, #1a302a 100%)',
+    icon: 'breathwork',
+  },
+  {
+    category: 'BREATHWORK',
+    title: 'Deep Belly Breathing',
+    bg: 'linear-gradient(135deg, #3a5050 0%, #284040 40%, #1a2a2a 100%)',
+    icon: 'breathwork',
+  },
+  {
+    category: 'PROTOCOL',
+    title: 'Wind-Down Routine',
+    bg: 'linear-gradient(135deg, #504a55 0%, #3a3540 40%, #25202a 100%)',
+    icon: 'tips',
+  },
+  {
+    category: 'BREATHWORK',
+    title: 'Body Scan & Breath',
+    bg: 'linear-gradient(135deg, #3a4a55 0%, #283a45 40%, #1a2a30 100%)',
+    icon: 'breathwork',
   },
 ]
