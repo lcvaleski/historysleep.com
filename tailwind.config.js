@@ -35,7 +35,7 @@ module.exports = {
         'ms-lavendar': '#C6B0B8',
         'ms-buttercream': '#F1DDBD',
         // Legacy colors for gradients (will update these next)
-        'ms-nocturne': '#0B1120',
+        'ms-nocturne': '#060B14',
         'ms-eclipse': '#57494F',
         'ms-blueberry': '#7C6C63',
       },

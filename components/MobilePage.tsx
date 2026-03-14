@@ -20,7 +20,7 @@ export default function MobilePage() {
       {/* Logo */}
       <div className="absolute top-4 left-4 z-10">
         <Image
-          src="/full_logo.png"
+          src="/newlogo.png"
           alt="Bore"
           width={40}
           height={40}
@@ -29,7 +29,7 @@ export default function MobilePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-20 pb-12 px-4 bg-gradient-to-b from-ms-nocturne to-[#0F1A2E] flex flex-col items-center">
+      <section className="pt-20 pb-12 px-4 bg-gradient-to-b from-ms-nocturne to-[#0A0F1A] flex flex-col items-center">
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center mb-4">
             <h1 className={`hero-title font-inter-tight text-3xl font-black uppercase text-center text-ms-white transition-opacity duration-700 ${
@@ -64,7 +64,7 @@ export default function MobilePage() {
       </section>
 
       {/* Download Section - iOS Button */}
-      <section className="pt-8 pb-20 px-4 bg-[#0F1A2E]">
+      <section className="pt-8 pb-20 px-4 bg-[#0A0F1A]">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <p className="text-xl font-semibold text-white mb-6 text-center max-w-[300px]">
             Hit play. Fall asleep.
@@ -89,7 +89,7 @@ export default function MobilePage() {
       </section>
 
       {/* Reviews */}
-      <section className="pb-16 px-4 bg-[#0F1A2E]">
+      <section className="pb-16 px-4 bg-[#0A0F1A]">
         <div className="max-w-6xl mx-auto">
           <ReviewCards cardClassName="w-full max-w-[280px]" />
         </div>
