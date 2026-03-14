@@ -11,7 +11,6 @@ module.exports = {
       fontFamily: {
         'manrope': ['Manrope', 'system-ui', 'sans-serif'],
         'inter-tight': ['Inter Tight', 'system-ui', 'sans-serif'],
-        'public-sans': ['Public Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'h1': ['28px', { lineHeight: '34px', letterSpacing: '0.01em' }],
