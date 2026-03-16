@@ -9,6 +9,7 @@ import AppPreview from './AppPreview'
 import AudioPlayer from './AudioPlayer'
 import ReviewCards from './ReviewCards'
 import Footer from './Footer'
+import Stars from './Stars'
 import MobileTickerCards from './MobileTickerCards'
 
 export default function MobilePage() {
@@ -16,7 +17,8 @@ export default function MobilePage() {
   const { isPlaying, currentTime, audioRef, togglePlayPause } = useAudioPlayer()
 
   return (
-    <div className="min-h-screen bg-ms-nocturne">
+    <div className="min-h-screen bg-ms-nocturne relative">
+      <Stars />
       {/* Logo */}
       <div className="absolute top-4 left-4 z-10">
         <Image

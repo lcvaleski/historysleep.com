@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         'manrope': ['Manrope', 'system-ui', 'sans-serif'],
         'inter-tight': ['Inter Tight', 'system-ui', 'sans-serif'],
+        'nunito': ['Nunito', 'system-ui', 'sans-serif'],
         'libre-baskerville': ['Libre Baskerville', 'serif'],
       },
       fontSize: {
@@ -45,10 +46,15 @@ module.exports = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'twinkle': {
+          '0%, 100%': { opacity: '0.05' },
+          '50%': { opacity: '0.25' },
+        },
       },
       animation: {
         'ticker-scroll': 'ticker-scroll 55s linear infinite',
         'ticker-scroll-slow': 'ticker-scroll 70s linear infinite',
+        'twinkle': 'twinkle 3s ease-in-out infinite',
       },
       backgroundImage: {
         'gradient-sleep': 'linear-gradient(135deg, #7C6C63 0%, #57494F 50%, #0B1120 100%)',
