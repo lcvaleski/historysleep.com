@@ -20,7 +20,7 @@ export default function MobilePage() {
       {/* Logo */}
       <div className="absolute top-4 left-4 z-10">
         <Image
-          src="/newlogo.png"
+          src="/full_logo.png"
           alt="Bore"
           width={40}
           height={40}
@@ -67,7 +67,7 @@ export default function MobilePage() {
       <section className="pt-8 pb-20 px-4 bg-[#0F1A2E]">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
           <p className="text-xl font-semibold text-white mb-6 text-center max-w-[300px]">
-            Hit play. Fall asleep.
+            Fall asleep to boring history, lectures, and radio archives.
           </p>
           <div className="flex justify-center">
             <Link
