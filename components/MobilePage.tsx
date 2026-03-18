@@ -37,7 +37,7 @@ export default function MobilePage() {
             <h1 className={`hero-title font-inter-tight text-3xl font-black uppercase text-center text-ms-white transition-opacity duration-700 ${
               contentLoaded ? 'opacity-100' : 'opacity-0'
             }`}>
-              <span className="opacity-50">Bore</span><br />helps you<br />fall asleep
+              <span className="opacity-20">Bore</span><br />helps you<br />fall asleep
             </h1>
           </div>
 
