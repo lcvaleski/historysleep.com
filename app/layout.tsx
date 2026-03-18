@@ -3,11 +3,11 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Bore — Hit play. Fall asleep.',
+  title: 'Bore - Fall asleep.',
   description: 'The sleep app that puts you to sleep with the world\'s most boring audio. BBC Radio, C-SPAN hearings, NASA recordings, university lectures. Available on iOS.',
   keywords: 'sleep app, insomnia relief, boring audio, sleep aid, fall asleep fast, bore, boring lectures, sleep sounds',
   openGraph: {
-    title: 'Bore — Hit play. Fall asleep.',
+    title: 'Bore - Fall asleep.',
     description: 'The sleep app that puts you to sleep with the world\'s most boring audio.',
     images: ['/shareimage.png'],
   },
