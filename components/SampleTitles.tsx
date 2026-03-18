@@ -91,7 +91,7 @@ export default function SampleTitles() {
         const posStyle: React.CSSProperties = {
           position: 'absolute',
           top: slot.top,
-          width: '280px',
+          width: '320px',
           pointerEvents: 'none',
           ...(slot.side === 'left'
             ? { left: slot.indent }
@@ -113,18 +113,15 @@ export default function SampleTitles() {
             />
             <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             {/* Fully opaque text */}
-            <div className="relative h-full flex flex-col justify-between p-4">
-              <div className="flex items-start justify-between">
-                <p className="text-white/70 text-xs font-bold tracking-[0.2em] uppercase">
-                  {title?.category ?? ''}
-                </p>
-                <svg className="w-5 h-5 text-white/20 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <p className="text-white text-base font-bold leading-snug">
-                {title?.title ?? ''}
+            <div className="relative h-full p-4">
+              <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase">
+                {title?.category ?? ''}
               </p>
+              <div className="absolute inset-0 flex items-center p-4">
+                <p className="text-white text-lg font-bold leading-snug">
+                  {title?.title ?? ''}
+                </p>
+              </div>
             </div>
           </div>
         )
