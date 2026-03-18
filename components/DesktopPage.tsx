@@ -22,7 +22,7 @@ export default function DesktopPage() {
       {/* Logo */}
       <div className="absolute top-6 left-6 z-10">
         <Image
-          src="/full_logo.png"
+          src="/newmoonicon.png"
           alt="Bore"
           width={40}
           height={40}

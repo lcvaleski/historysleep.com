@@ -22,7 +22,7 @@ export default function MobilePage() {
       {/* Logo */}
       <div className="absolute top-4 left-4 z-10">
         <Image
-          src="/full_logo.png"
+          src="/newmoonicon.png"
           alt="Bore"
           width={40}
           height={40}
