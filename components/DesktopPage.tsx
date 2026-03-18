@@ -75,9 +75,9 @@ export default function DesktopPage() {
             <Link
               href="https://apps.apple.com/us/app/history-sleep/id6749167616"
               onClick={handleAppStoreCTAClick}
-              className="inline-block transform hover:scale-105 transition-transform"
+              className="inline-block"
             >
-              <div className="bg-ms-eclipse/90 rounded-[20px] p-[20px] pb-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] flex flex-col items-center cursor-pointer border border-white/10">
+              <div className="bg-[#2A3A50]/90 rounded-[20px] p-[20px] pb-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.25)] flex flex-col items-center cursor-pointer border border-white/10">
                 <div className="bg-white/95 p-3 rounded-[16px]">
                   <Image
                     src="/qr-code.png"
