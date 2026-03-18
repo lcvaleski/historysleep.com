@@ -20,7 +20,7 @@ export default function DesktopPage() {
     <div className="min-h-screen bg-ms-nocturne relative">
       <Stars />
       {/* Logo */}
-      <div className="absolute top-6 left-6 z-10">
+      <div className={`absolute top-6 left-6 z-10 transition-opacity duration-700 ${contentLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <Image
           src="/newmoonicon.png"
           alt="Bore"
