@@ -101,24 +101,29 @@ export default function SampleTitles() {
         return (
           <div
             key={i}
-            className={`hidden lg:block rounded-xl aspect-[3/1] transition-opacity duration-700 ease-in-out ${
+            className={`hidden lg:block rounded-xl aspect-[3.5/1] transition-opacity duration-700 ease-in-out ${
               visible && title ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
             style={posStyle}
           >
             {/* Semi-transparent background */}
             <div
-              className="absolute inset-0 rounded-xl opacity-40"
+              className="absolute inset-0 rounded-xl opacity-25"
               style={{ background: title?.bg ?? 'transparent' }}
             />
             <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             {/* Fully opaque text */}
-            <div className="relative h-full p-4">
-              <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase">
-                {title?.category ?? ''}
-              </p>
-              <div className="absolute inset-0 flex items-center p-4">
-                <p className="text-white text-lg font-bold leading-snug">
+            <div className="relative h-full p-4 flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
+                <svg width="10" height="12" viewBox="0 0 10 12" fill="none" className="ml-0.5">
+                  <path d="M0 0L10 6L0 12V0Z" fill="white" fillOpacity="0.5" />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase">
+                  {title?.category ?? ''}
+                </p>
+                <p className="text-white text-lg font-bold leading-snug truncate">
                   {title?.title ?? ''}
                 </p>
               </div>
