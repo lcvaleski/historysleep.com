@@ -120,10 +120,10 @@ export default function SampleTitles() {
                 </svg>
               </div>
               <div className="min-w-0">
-                <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase">
+                <p className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase whitespace-nowrap">
                   {title?.category ?? ''}
                 </p>
-                <p className="text-white text-lg font-bold leading-snug truncate">
+                <p className="text-white/70 text-lg font-bold leading-snug line-clamp-2">
                   {title?.title ?? ''}
                 </p>
               </div>

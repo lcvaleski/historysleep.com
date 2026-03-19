@@ -36,10 +36,10 @@ export default function MobileTickerCards({ visible }: { visible: boolean }) {
                   </svg>
                 </div>
                 <div className="min-w-0">
-                  <p className="text-white/30 text-[10px] font-bold tracking-[0.2em] uppercase">
+                  <p className="text-white/30 text-[10px] font-bold tracking-[0.2em] uppercase whitespace-nowrap">
                     {title.category}
                   </p>
-                  <p className="text-white text-sm font-bold leading-snug truncate">
+                  <p className="text-white/70 text-sm font-bold leading-snug line-clamp-2">
                     {title.title}
                   </p>
                 </div>

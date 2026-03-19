@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Bore - Fall asleep.',
     description: 'The sleep app that puts you to sleep with the world\'s most boring audio.',
-    images: ['/shareimage.png'],
+    images: ['/og-image.png'],
   },
 }
 
