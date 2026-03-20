@@ -34,7 +34,7 @@ export default function DesktopPage() {
       <section className="pt-32 pb-20 px-4 bg-gradient-to-b from-ms-nocturne to-[#0F1A2E] flex flex-col items-center justify-center">
         <div className="relative w-full max-w-6xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className={`hero-title font-inter-tight text-3xl md:text-4xl font-black uppercase text-center text-ms-white transition-opacity duration-700 ${
+            <h1 className={`hero-title font-inter-tight text-4xl md:text-5xl font-black uppercase text-center text-ms-white transition-opacity duration-700 ${
               contentLoaded ? 'opacity-100' : 'opacity-0'
             }`}>
               <span className="opacity-20">Bore</span><br />helps you<br />fall asleep
