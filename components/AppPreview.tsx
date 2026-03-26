@@ -39,8 +39,8 @@ export default function AppPreview({
           height={1248}
           priority
           quality={90}
-          className={`absolute inset-0 drop-shadow-2xl w-full h-full ${borderRadius} border-4 border-black`}
-          style={{ objectFit: 'cover' }}
+          className={`absolute inset-0 drop-shadow-2xl w-full h-full ${borderRadius} `}
+          style={{ objectFit: 'contain' }}
         />
       </Link>
     </div>
