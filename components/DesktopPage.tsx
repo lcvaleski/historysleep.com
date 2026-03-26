@@ -60,16 +60,16 @@ export default function DesktopPage() {
             togglePlayPause={togglePlayPause}
             audioRef={audioRef}
             contentLoaded={contentLoaded}
-            className="mt-8 mb-12"
+            className="mt-8 mb-4"
           />
         </div>
       </section>
 
       {/* QR Code Download Section */}
-      <section className="pt-8 pb-16 px-4 bg-[#0F1A2E]">
+      <section className="pt-0 pb-16 px-4 bg-[#0F1A2E]">
         <div className="max-w-6xl mx-auto flex flex-col items-center">
-          <p className="text-xl font-semibold text-white mb-10 text-center max-w-[300px]">
-            Fall asleep to boring history, lectures, and radio archives.
+          <p className="text-2xl font-bold text-white mb-16 text-center max-w-[340px]">
+            Fall asleep to hand picked history, lectures, and radio archives.
           </p>
           <div className="flex justify-center">
             <Link
