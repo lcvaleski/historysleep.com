@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import MixpanelProvider from '@/components/MixpanelProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -45,7 +46,10 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="font-manrope">{children}</body>
+      <body className="font-manrope">
+        <MixpanelProvider />
+        {children}
+      </body>
     </html>
   )
 }
